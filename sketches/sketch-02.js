@@ -17,8 +17,9 @@ const sketch = () => ({ context, width, height }) => {
   const cy = height * 0.5;
   const w = width * 0.01;
   const h = height * 0.1;
-  let x; let y;
-  const num = 12;
+  let x;
+  let y;
+  const num = 40;
   const radius = width * 0.3;
 
   for (let i = 0; i < num; i += 1) {
@@ -27,7 +28,6 @@ const sketch = () => ({ context, width, height }) => {
 
     x = cx + radius * Math.sin(angel);
     y = cy + radius * Math.cos(angel);
-
 
     context.save();
     context.translate(x, y);
@@ -39,7 +39,6 @@ const sketch = () => ({ context, width, height }) => {
     context.fill();
     context.restore();
 
-
     context.save();
     context.translate(cx, cy);
     context.rotate(-angel);
@@ -47,7 +46,13 @@ const sketch = () => ({ context, width, height }) => {
     context.lineWidth = random.range(5, 20);
 
     context.beginPath();
-    context.arc(0, 0, radius * random.range(0.7, 1.3), slice * -0.3, slice * 0.3);
+    context.arc(
+      0,
+      0,
+      radius * random.range(0.7, 1.3),
+      slice * random.range(1, -8),
+      slice * random.range(1, 5),
+    );
     context.stroke();
 
     context.restore();
